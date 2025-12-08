@@ -1,7 +1,7 @@
 /* Root Variables */
 :root {
-    --primary-color: #f36b24;
-    --secondary-color: #245699;
+    --primary-color: #5ba4d9;
+    --secondary-color: #3d8bc4;
     --dark-color: #1a1a1a;
     --light-color: #f8f9fa;
     --white: #ffffff;
@@ -16,14 +16,14 @@
 }
 
 body {
-    font-family: 'Lato', sans-serif;
+    font-family: 'Inter', sans-serif;
     color: var(--dark-color);
     line-height: 1.6;
     overflow-x: hidden;
 }
 
 h1, h2, h3, h4, h5, h6 {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Inter', sans-serif;
     font-weight: 700;
     margin-bottom: 1rem;
 }
@@ -46,32 +46,48 @@ img {
 
 .navbar-brand {
     display: flex;
-    flex-direction: column;
-    line-height: 1.2;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.75rem;
+    margin-left: -4rem;
 }
 
 .brand-name {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 1.5rem;
-    font-weight: 800;
-    color: var(--primary-color);
+    font-family: 'Inter', sans-serif;
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--dark-color);
     text-transform: uppercase;
+    letter-spacing: -0.025em;
+}
+
+.brand-divider {
+    width: 1px;
+    height: 1.75rem;
+    background-color: var(--dark-color);
 }
 
 .brand-subtitle {
-    font-family: 'Lato', sans-serif;
-    font-size: 0.875rem;
-    color: var(--secondary-color);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.85rem;
+    color: var(--dark-color);
     font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+.navbar-nav {
+    margin-right: -3rem;
 }
 
 .navbar-nav .nav-link {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 600;
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
     color: var(--dark-color);
     margin: 0 0.5rem;
     text-transform: uppercase;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
+    letter-spacing: 0.05em;
     transition: color 0.3s ease;
 }
 
@@ -100,16 +116,17 @@ img {
     overflow: hidden;
 }
 
-.hero-section::before {
-    content: '';
+.hero-video {
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: url('../images/hero-bg.jpg') center/cover no-repeat;
-    opacity: 0.2;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    transform: translate(-50%, -50%);
     z-index: 0;
+    object-fit: cover;
 }
 
 .hero-overlay {
@@ -118,7 +135,7 @@ img {
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.3);
     z-index: 1;
 }
 
@@ -374,6 +391,95 @@ img {
     border-radius: 5px;
 }
 
+/* Reviews Section */
+.reviews-section {
+    padding: 80px 0;
+    background-color: var(--light-color);
+}
+
+.reviews-slider-container {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    position: relative;
+}
+
+.reviews-slider {
+    overflow: hidden;
+    flex: 1;
+}
+
+.reviews-track {
+    display: flex;
+    gap: 1.5rem;
+    transition: transform 0.4s ease;
+}
+
+.review-card {
+    flex: 0 0 calc(33.333% - 1rem);
+    background: var(--white);
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    min-height: 200px;
+}
+
+.review-stars {
+    color: #ffc107;
+    margin-bottom: 1rem;
+}
+
+.review-stars i {
+    font-size: 1rem;
+    margin-right: 2px;
+}
+
+.review-text {
+    font-size: 1rem;
+    color: var(--gray);
+    margin-bottom: 1rem;
+    font-style: italic;
+    min-height: 80px;
+}
+
+.review-author {
+    font-weight: 700;
+    color: var(--dark-color);
+    margin: 0;
+}
+
+.review-arrow {
+    background: var(--primary-color);
+    border: none;
+    color: var(--white);
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+}
+
+.review-arrow:hover {
+    background: var(--secondary-color);
+    transform: scale(1.1);
+}
+
+@media (max-width: 991px) {
+    .review-card {
+        flex: 0 0 calc(50% - 0.75rem);
+    }
+}
+
+@media (max-width: 767px) {
+    .review-card {
+        flex: 0 0 100%;
+    }
+}
+
 /* Footer */
 .footer {
     background-color: var(--dark-color);
@@ -381,11 +487,12 @@ img {
 }
 
 .footer-brand {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Inter', sans-serif;
     font-size: 1.75rem;
-    font-weight: 800;
-    color: var(--primary-color);
+    font-weight: 700;
+    color: var(--white);
     text-transform: uppercase;
+    letter-spacing: -0.025em;
     margin-bottom: 0;
 }
 

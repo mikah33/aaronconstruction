@@ -150,6 +150,47 @@ phoneInputs.forEach(input => {
     });
 });
 
+// Reviews slider
+let reviewPosition = 0;
+const reviewsPerPage = 3;
+const totalReviews = 5;
+
+function slideReviews(direction) {
+    const track = document.querySelector('.reviews-track');
+    const maxPosition = totalReviews - reviewsPerPage;
+
+    reviewPosition += direction;
+
+    if (reviewPosition < 0) {
+        reviewPosition = 0;
+    } else if (reviewPosition > maxPosition) {
+        reviewPosition = maxPosition;
+    }
+
+    const cardWidth = document.querySelector('.review-card').offsetWidth + 24; // 24px is the gap
+    track.style.transform = `translateX(-${reviewPosition * cardWidth}px)`;
+}
+
+// Touch swipe support for reviews
+let touchStartX = 0;
+let touchEndX = 0;
+
+const reviewsSlider = document.querySelector('.reviews-slider');
+if (reviewsSlider) {
+    reviewsSlider.addEventListener('touchstart', e => {
+        touchStartX = e.changedTouches[0].screenX;
+    });
+
+    reviewsSlider.addEventListener('touchend', e => {
+        touchEndX = e.changedTouches[0].screenX;
+        if (touchStartX - touchEndX > 50) {
+            slideReviews(1);
+        } else if (touchEndX - touchStartX > 50) {
+            slideReviews(-1);
+        }
+    });
+}
+
 // Console log to confirm script loaded
 console.log('Parenteau Property Development website loaded successfully!');
 console.log('Contact: (401) 678-6840');

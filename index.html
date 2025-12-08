@@ -13,7 +13,7 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@400;600;700;800&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/style.css">
 </head>
@@ -24,6 +24,7 @@
         <div class="container">
             <a class="navbar-brand" href="index.html">
                 <span class="brand-name">PARENTEAU</span>
+                <span class="brand-divider"></span>
                 <span class="brand-subtitle">Property Development</span>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -58,12 +59,16 @@
 
     <!-- Hero Section -->
     <section id="home" class="hero-section">
+        <video class="hero-video" autoplay muted loop playsinline>
+            <source src="videos/hero-bg.mp4" type="video/mp4">
+            <source src="videos/hero-bg.mov" type="video/quicktime">
+        </video>
         <div class="hero-overlay"></div>
         <div class="container h-100">
             <div class="row h-100 align-items-center">
                 <div class="col-lg-8" data-aos="fade-up">
-                    <h1 class="hero-title">EXPERT PROPERTY DEVELOPMENT</h1>
-                    <h2 class="hero-subtitle">Professional Development Services Throughout Rhode Island</h2>
+                    <h1 class="hero-title">Parenteau Property Development</h1>
+                    <h2 class="hero-subtitle">Premium Outdoor Construction Services across Rhode Island</h2>
                     <p class="hero-text">Quality craftsmanship, reliable service, and exceptional results for all your property development needs.</p>
                     <div class="hero-buttons">
                         <a href="#contact" class="btn btn-primary btn-lg me-3">Get Free Estimate</a>
@@ -130,10 +135,10 @@
                 <div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="200">
                     <div class="service-card">
                         <div class="service-icon">
-                            <i class="fas fa-building"></i>
+                            <i class="fas fa-umbrella-beach"></i>
                         </div>
-                        <h3>Commercial Projects</h3>
-                        <p>Professional commercial property development for businesses and organizations of all sizes.</p>
+                        <h3>Outdoor Living Spaces</h3>
+                        <p>Custom patios, decks, pergolas, and outdoor kitchens designed to extend your living space and create the perfect backyard retreat.</p>
                     </div>
                 </div>
 
@@ -187,7 +192,7 @@
                 <div class="col-lg-6 mb-4 mb-lg-0" data-aos="fade-right">
                     <h2 class="section-title">ABOUT PARENTEAU PROPERTY DEVELOPMENT</h2>
                     <p class="lead">Your Trusted Partner in Property Development</p>
-                    <p>At Parenteau Property Development, we bring years of experience and expertise to every project. Our commitment to quality craftsmanship, attention to detail, and customer satisfaction sets us apart in the Rhode Island property development industry.</p>
+                    <p>At Parenteau Property Development, we bring years of experience and expertise to every project. Our commitment to quality craftsmanship, attention to detail, and customer satisfaction sets us apart in Rhode Island.</p>
                     <p>We understand that your property is one of your most valuable investments. That's why we treat every project with the care and professionalism it deserves, ensuring exceptional results that stand the test of time.</p>
 
                     <div class="about-features mt-4">
@@ -324,6 +329,86 @@
                         <button type="submit" class="btn btn-primary btn-lg w-100">Send Message</button>
                     </form>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section id="reviews" class="reviews-section py-5">
+        <div class="container">
+            <div class="text-center mb-5" data-aos="fade-up">
+                <h2 class="section-title">WHAT OUR CLIENTS SAY</h2>
+                <p class="section-subtitle">Read Reviews From Our Satisfied Customers</p>
+            </div>
+
+            <div class="reviews-slider-container">
+                <button class="review-arrow review-arrow-left" onclick="slideReviews(-1)">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+
+                <div class="reviews-slider">
+                    <div class="reviews-track">
+                        <div class="review-card">
+                            <div class="review-stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <p class="review-text">"Absolutely thrilled with our new patio! The team was professional, on time, and the quality of work exceeded our expectations. Highly recommend!"</p>
+                            <p class="review-author">— Michael T.</p>
+                        </div>
+                        <div class="review-card">
+                            <div class="review-stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <p class="review-text">"They transformed our backyard into an outdoor oasis. The deck is beautiful and built to last. Great communication throughout the entire project."</p>
+                            <p class="review-author">— Sarah M.</p>
+                        </div>
+                        <div class="review-card">
+                            <div class="review-stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <p class="review-text">"From start to finish, Parenteau Property Development delivered exceptional service. Our outdoor kitchen is exactly what we envisioned. Worth every penny!"</p>
+                            <p class="review-author">— David R.</p>
+                        </div>
+                        <div class="review-card">
+                            <div class="review-stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <p class="review-text">"Best construction company in Rhode Island! They built us a stunning pergola and fire pit area. The crew was respectful and cleaned up every day."</p>
+                            <p class="review-author">— Jennifer L.</p>
+                        </div>
+                        <div class="review-card">
+                            <div class="review-stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <p class="review-text">"We've used them twice now and both times the results were fantastic. Fair pricing, quality materials, and true craftsmanship. Can't say enough good things!"</p>
+                            <p class="review-author">— Robert K.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="review-arrow review-arrow-right" onclick="slideReviews(1)">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
             </div>
         </div>
     </section>
