@@ -395,8 +395,62 @@ function submitQuestionnaire() {
     questionnaireData.email = email;
     questionnaireData.address = address;
 
-    // Log data (in production, you'd send this to a server)
-    console.log('Questionnaire submitted:', questionnaireData);
+    // Map values to readable labels
+    const projectLabels = {
+        'roof': 'Roof',
+        'siding': 'Siding',
+        'deck': 'Deck',
+        'patio': 'Patio',
+        'renovation': 'Renovation'
+    };
+
+    const propertyLabels = {
+        'residential': 'Residential',
+        'commercial': 'Commercial'
+    };
+
+    const timelineLabels = {
+        'asap': 'ASAP',
+        '1-3-months': '1-3 Months',
+        '3-6-months': '3-6 Months',
+        'exploring': 'Just Exploring'
+    };
+
+    const budgetLabels = {
+        '5k-10k': '$5k - $10k',
+        '10k-25k': '$10k - $25k',
+        '25k-50k': '$25k - $50k',
+        '50k+': '$50k+'
+    };
+
+    // Get readable values
+    const projectType = questionnaireData.step1 && questionnaireData.step1.startsWith('other:')
+        ? questionnaireData.step1.replace('other: ', '')
+        : (projectLabels[questionnaireData.step1] || questionnaireData.step1);
+    const propertyType = propertyLabels[questionnaireData.step2] || questionnaireData.step2;
+    const timeline = timelineLabels[questionnaireData.step3] || questionnaireData.step3;
+    const budget = budgetLabels[questionnaireData.step4] || questionnaireData.step4;
+
+    // Send to webhook
+    const webhookData = {
+        name: name,
+        phone: phone,
+        email: email,
+        address: address || 'Not provided',
+        projectType: projectType,
+        propertyType: propertyType,
+        timeline: timeline,
+        budget: budget,
+        submittedAt: new Date().toISOString()
+    };
+
+    fetch('https://contractorai.app.n8n.cloud/webhook/f1d57f25-0767-454e-9081-4795252da419', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(webhookData)
+    }).catch(err => console.log('Webhook error:', err));
 
     // Show popup first
     document.getElementById('quotePopup').classList.add('active');
