@@ -107,41 +107,21 @@ window.addEventListener('load', function() {
     document.body.classList.add('loaded');
 });
 
-// Force autoplay videos on mobile (iOS fix) with lazy loading
+// Force autoplay videos on mobile (iOS fix)
 document.addEventListener('DOMContentLoaded', function() {
     const videos = document.querySelectorAll('video[autoplay]');
     videos.forEach(video => {
-        // Hide video until it's ready to play
-        video.style.opacity = '0';
-        video.style.transition = 'opacity 0.3s ease';
-
         video.muted = true;
         video.setAttribute('playsinline', '');
 
-        // Wait for video to be ready before showing
-        video.addEventListener('canplay', function() {
-            video.style.opacity = '1';
-            video.play().catch(() => {});
-        }, { once: true });
-
-        // Also listen for playing event
-        video.addEventListener('playing', function() {
-            video.style.opacity = '1';
-        }, { once: true });
-
-        // Try to play
+        // Try to play immediately
         video.play().catch(function() {
-            // If autoplay fails, try on first user interaction
+            // If autoplay fails, play on first user interaction
             document.addEventListener('touchstart', function playVideo() {
                 video.play();
                 document.removeEventListener('touchstart', playVideo);
             }, { once: true });
         });
-
-        // Fallback: show video after 2 seconds even if not playing
-        setTimeout(function() {
-            video.style.opacity = '1';
-        }, 2000);
     });
 });
 
