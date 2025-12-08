@@ -209,6 +209,457 @@ img {
     color: var(--secondary-color) !important;
 }
 
+/* Questionnaire Section */
+.questionnaire-section {
+    background: linear-gradient(135deg, #f5f7fa 0%, #e4e8ec 100%);
+    padding: 80px 0;
+}
+
+.questionnaire-wrapper {
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.questionnaire-title {
+    font-family: 'Inter', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--dark-color);
+    margin-bottom: 0.5rem;
+}
+
+.questionnaire-subtitle {
+    font-size: 1.1rem;
+    color: var(--gray);
+    margin-bottom: 2.5rem;
+}
+
+/* Progress Indicator */
+.progress-indicator {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 3rem;
+}
+
+.progress-step {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background: #e0e0e0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.progress-step.active {
+    background: var(--primary-color);
+}
+
+.progress-step.completed {
+    background: var(--primary-color);
+}
+
+.step-number {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 1rem;
+    color: #999;
+}
+
+.progress-step.active .step-number,
+.progress-step.completed .step-number {
+    color: var(--white);
+}
+
+.progress-line {
+    width: 60px;
+    height: 3px;
+    background: #e0e0e0;
+    transition: all 0.3s ease;
+}
+
+.progress-line.active {
+    background: var(--primary-color);
+}
+
+/* Question Container */
+.question-container {
+    background: var(--white);
+    border-radius: 20px;
+    padding: 3rem 2rem;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    min-height: 400px;
+}
+
+.question-step {
+    display: none;
+}
+
+.question-step.active {
+    display: block;
+    animation: fadeIn 0.4s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.step-badge {
+    display: inline-block;
+    background: var(--primary-color);
+    color: var(--white);
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 0.35rem 1rem;
+    border-radius: 20px;
+    margin-bottom: 1.5rem;
+    letter-spacing: 0.5px;
+}
+
+.question-title {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--dark-color);
+    margin-bottom: 0.5rem;
+}
+
+.question-desc {
+    font-size: 1rem;
+    color: var(--gray);
+    margin-bottom: 2rem;
+}
+
+/* Options Grid */
+.options-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.options-grid.options-2col {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.option-btn {
+    background: var(--white);
+    border: 2px solid #e0e0e0;
+    border-radius: 12px;
+    padding: 1.5rem 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.option-btn:hover {
+    border-color: var(--primary-color);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.option-btn.selected {
+    border-color: var(--primary-color);
+    background: rgba(91, 164, 217, 0.1);
+}
+
+.option-btn i {
+    font-size: 1.75rem;
+    color: var(--primary-color);
+}
+
+.option-btn span {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--dark-color);
+}
+
+/* Contact Form Step */
+.contact-form-step {
+    max-width: 400px;
+    margin: 0 auto 1.5rem;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-input {
+    width: 100%;
+    padding: 1rem 1.25rem;
+    border: 2px solid #e0e0e0;
+    border-radius: 10px;
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.form-input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(91, 164, 217, 0.2);
+}
+
+.form-input::placeholder {
+    color: #999;
+}
+
+/* Other Input Container */
+.other-input-container {
+    margin-top: 1.5rem;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Continue Button */
+.continue-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: var(--white);
+    font-family: 'Inter', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    padding: 1rem 3rem;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.continue-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(91, 164, 217, 0.4);
+    color: var(--white);
+}
+
+/* Back Button */
+.questionnaire-nav {
+    margin-top: 1.5rem;
+}
+
+.back-btn {
+    background: transparent;
+    border: none;
+    color: var(--gray);
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.back-btn:hover {
+    color: var(--dark-color);
+}
+
+/* Success Step */
+.success-step {
+    text-align: center;
+}
+
+.success-icon {
+    margin-bottom: 1.5rem;
+}
+
+.success-icon i {
+    font-size: 4rem;
+    color: #28a745;
+}
+
+/* Quote Confirmation Popup */
+.quote-popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    padding: 1rem;
+}
+
+.quote-popup-overlay.active {
+    display: flex;
+}
+
+.quote-popup {
+    background: var(--white);
+    border-radius: 20px;
+    padding: 2.5rem;
+    max-width: 450px;
+    width: 100%;
+    text-align: center;
+    animation: popupIn 0.3s ease;
+}
+
+@keyframes popupIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.popup-icon {
+    margin-bottom: 1.5rem;
+}
+
+.popup-icon i {
+    font-size: 4rem;
+    color: var(--primary-color);
+}
+
+.quote-popup h3 {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--dark-color);
+    margin-bottom: 1rem;
+}
+
+.quote-popup p {
+    font-size: 1rem;
+    color: var(--gray);
+    margin-bottom: 0.75rem;
+    line-height: 1.6;
+}
+
+.quote-popup .popup-subtext {
+    font-size: 0.9rem;
+    color: #999;
+    margin-bottom: 1.5rem;
+}
+
+.popup-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.popup-btn {
+    padding: 0.875rem 1.5rem;
+    border-radius: 50px;
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.popup-btn-primary {
+    background: var(--primary-color);
+    color: var(--white);
+    border: 2px solid var(--primary-color);
+}
+
+.popup-btn-primary:hover {
+    background: var(--secondary-color);
+    border-color: var(--secondary-color);
+}
+
+.popup-btn-secondary {
+    background: transparent;
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+}
+
+.popup-btn-secondary:hover {
+    background: var(--primary-color);
+    color: var(--white);
+}
+
+/* Questionnaire Mobile Styles */
+@media (max-width: 767px) {
+    .questionnaire-section {
+        padding: 50px 0;
+    }
+
+    .questionnaire-title {
+        font-size: 1.75rem;
+    }
+
+    .question-container {
+        padding: 2rem 1.25rem;
+        border-radius: 15px;
+    }
+
+    .question-title {
+        font-size: 1.25rem;
+    }
+
+    .options-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.75rem;
+    }
+
+    .options-grid.options-2col {
+        grid-template-columns: 1fr;
+    }
+
+    .option-btn {
+        padding: 1rem 0.75rem;
+    }
+
+    .option-btn i {
+        font-size: 1.5rem;
+    }
+
+    .option-btn span {
+        font-size: 0.85rem;
+    }
+
+    .progress-step {
+        width: 35px;
+        height: 35px;
+    }
+
+    .step-number {
+        font-size: 0.85rem;
+    }
+
+    .progress-line {
+        width: 30px;
+    }
+
+    .continue-btn {
+        width: 100%;
+        padding: 1rem 2rem;
+    }
+}
+
 /* Hero Section */
 .hero-section {
     position: relative;

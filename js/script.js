@@ -9,9 +9,9 @@ AOS.init({
 window.addEventListener('scroll', function() {
     const navbar = document.querySelector('.navbar');
     if (window.scrollY > 50) {
-        navbar.classList.add('shadow');
+        navbar.classList.add('scrolled');
     } else {
-        navbar.classList.remove('shadow');
+        navbar.classList.remove('scrolled');
     }
 });
 
@@ -194,3 +194,188 @@ if (reviewsSlider) {
 // Console log to confirm script loaded
 console.log('Parenteau Property Development website loaded successfully!');
 console.log('Contact: (401) 678-6840');
+
+// =====================
+// QUESTIONNAIRE FUNCTIONALITY
+// =====================
+
+let currentStep = 1;
+const totalSteps = 5;
+const questionnaireData = {};
+
+// Initialize questionnaire
+document.addEventListener('DOMContentLoaded', function() {
+    // Add click handlers to all option buttons
+    const optionBtns = document.querySelectorAll('.option-btn');
+    optionBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+            selectOption(this);
+        });
+    });
+});
+
+// Select an option and auto-advance
+function selectOption(btn) {
+    const step = btn.closest('.question-step');
+    const stepNum = step.dataset.step;
+    const value = btn.dataset.value;
+
+    // If "other" is clicked, don't auto-advance (handled separately)
+    if (value === 'other') {
+        return;
+    }
+
+    // Hide other input if visible
+    const otherContainer = step.querySelector('.other-input-container');
+    if (otherContainer) {
+        otherContainer.style.display = 'none';
+    }
+
+    // Remove selected class from siblings
+    step.querySelectorAll('.option-btn').forEach(b => b.classList.remove('selected'));
+
+    // Add selected class to clicked button
+    btn.classList.add('selected');
+
+    // Store the value
+    questionnaireData[`step${stepNum}`] = value;
+
+    // Auto-advance to next step after short delay
+    setTimeout(() => {
+        nextStep();
+    }, 300);
+}
+
+// Show other input field
+function showOtherInput(btn) {
+    const step = btn.closest('.question-step');
+
+    // Remove selected class from siblings
+    step.querySelectorAll('.option-btn').forEach(b => b.classList.remove('selected'));
+
+    // Add selected class to other button
+    btn.classList.add('selected');
+
+    // Show input container
+    const otherContainer = step.querySelector('.other-input-container');
+    otherContainer.style.display = 'block';
+
+    // Focus the input
+    document.getElementById('other-project').focus();
+}
+
+// Submit other project type
+function submitOther() {
+    const otherValue = document.getElementById('other-project').value.trim();
+
+    if (!otherValue) {
+        alert('Please describe your project');
+        return;
+    }
+
+    // Store the custom value
+    questionnaireData.step1 = 'other: ' + otherValue;
+
+    // Advance to next step
+    nextStep();
+}
+
+// Go to next step
+function nextStep() {
+    if (currentStep < totalSteps) {
+        // Hide current step
+        document.querySelector(`.question-step[data-step="${currentStep}"]`).classList.remove('active');
+
+        // Update progress indicator
+        document.querySelector(`.progress-step[data-step="${currentStep}"]`).classList.add('completed');
+
+        // Get all progress lines and mark appropriate ones as active
+        const progressLines = document.querySelectorAll('.progress-line');
+        if (currentStep <= progressLines.length) {
+            progressLines[currentStep - 1].classList.add('active');
+        }
+
+        // Move to next step
+        currentStep++;
+
+        // Show next step
+        document.querySelector(`.question-step[data-step="${currentStep}"]`).classList.add('active');
+        document.querySelector(`.progress-step[data-step="${currentStep}"]`).classList.add('active');
+
+        // Show back button after first step
+        if (currentStep > 1) {
+            document.querySelector('.back-btn').style.display = 'inline-flex';
+        }
+    }
+}
+
+// Go to previous step
+function prevStep() {
+    if (currentStep > 1) {
+        // Hide current step
+        document.querySelector(`.question-step[data-step="${currentStep}"]`).classList.remove('active');
+        document.querySelector(`.progress-step[data-step="${currentStep}"]`).classList.remove('active');
+
+        // Get all progress lines and unmark appropriate ones
+        const progressLines = document.querySelectorAll('.progress-line');
+        if (currentStep > 1 && currentStep - 2 < progressLines.length) {
+            progressLines[currentStep - 2].classList.remove('active');
+        }
+
+        // Move to previous step
+        currentStep--;
+
+        // Show previous step
+        document.querySelector(`.question-step[data-step="${currentStep}"]`).classList.add('active');
+        document.querySelector(`.progress-step[data-step="${currentStep}"]`).classList.remove('completed');
+
+        // Hide back button on first step
+        if (currentStep === 1) {
+            document.querySelector('.back-btn').style.display = 'none';
+        }
+    }
+}
+
+// Submit questionnaire
+function submitQuestionnaire() {
+    // Get contact form values
+    const name = document.getElementById('q-name').value;
+    const phone = document.getElementById('q-phone').value;
+    const email = document.getElementById('q-email').value;
+    const address = document.getElementById('q-address').value;
+
+    // Validate required fields
+    if (!name || !phone || !email) {
+        alert('Please fill in all required fields (Name, Phone, Email)');
+        return;
+    }
+
+    // Store contact info
+    questionnaireData.name = name;
+    questionnaireData.phone = phone;
+    questionnaireData.email = email;
+    questionnaireData.address = address;
+
+    // Log data (in production, you'd send this to a server)
+    console.log('Questionnaire submitted:', questionnaireData);
+
+    // Show popup first
+    document.getElementById('quotePopup').classList.add('active');
+
+    // Hide current step and progress
+    document.querySelector(`.question-step[data-step="${currentStep}"]`).classList.remove('active');
+    document.querySelector('.progress-indicator').style.display = 'none';
+    document.querySelector('.questionnaire-nav').style.display = 'none';
+
+    // Show success message
+    document.querySelector('.question-step[data-step="success"]').classList.add('active');
+
+    // Update title
+    document.querySelector('.questionnaire-title').textContent = 'Request Submitted!';
+    document.querySelector('.questionnaire-subtitle').textContent = '';
+}
+
+// Close popup
+function closePopup() {
+    document.getElementById('quotePopup').classList.remove('active');
+}
