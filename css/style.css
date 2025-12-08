@@ -68,7 +68,7 @@ img {
 .navbar > .container-fluid {
     background: transparent !important;
     display: flex !important;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     align-items: center;
     justify-content: space-between;
     position: relative;
@@ -95,9 +95,16 @@ img {
 @media (max-width: 991.98px) {
     .navbar-toggler {
         display: flex !important;
+        order: 2;
+        margin-left: auto;
+    }
+
+    .navbar-brand {
+        order: 1;
     }
 
     .navbar-collapse {
+        order: 3;
         position: absolute;
         top: 100%;
         left: 0;
@@ -681,6 +688,21 @@ img {
     height: 100%;
     object-fit: cover;
     z-index: 0;
+}
+
+/* Hide video controls on mobile */
+.hero-video::-webkit-media-controls {
+    display: none !important;
+}
+
+.hero-video::-webkit-media-controls-start-playback-button {
+    display: none !important;
+    -webkit-appearance: none;
+}
+
+.hero-video::-webkit-media-controls-play-button {
+    display: none !important;
+    -webkit-appearance: none;
 }
 
 .hero-overlay {
