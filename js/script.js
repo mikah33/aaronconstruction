@@ -98,6 +98,34 @@ window.addEventListener('load', function() {
     document.body.classList.add('loaded');
 });
 
+// Force autoplay videos on mobile (iOS fix)
+document.addEventListener('DOMContentLoaded', function() {
+    const videos = document.querySelectorAll('video[autoplay]');
+    videos.forEach(video => {
+        video.muted = true;
+        video.setAttribute('playsinline', '');
+        video.play().catch(function() {
+            // If autoplay fails, try on first user interaction
+            document.addEventListener('touchstart', function playVideo() {
+                video.play();
+                document.removeEventListener('touchstart', playVideo);
+            }, { once: true });
+        });
+    });
+});
+
+// Also try to play videos when they become visible
+document.addEventListener('visibilitychange', function() {
+    if (!document.hidden) {
+        const videos = document.querySelectorAll('video[autoplay]');
+        videos.forEach(video => {
+            if (video.paused) {
+                video.play().catch(() => {});
+            }
+        });
+    }
+});
+
 // Mobile menu close on outside click
 document.addEventListener('click', function(event) {
     const navbar = document.querySelector('.navbar-collapse');
