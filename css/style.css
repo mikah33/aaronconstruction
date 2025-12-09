@@ -690,19 +690,48 @@ img {
     z-index: 0;
 }
 
-/* Hide video controls on mobile */
+/* Hide video controls and play button on mobile */
 .hero-video::-webkit-media-controls {
     display: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
 }
 
 .hero-video::-webkit-media-controls-start-playback-button {
     display: none !important;
     -webkit-appearance: none;
+    opacity: 0 !important;
+    visibility: hidden !important;
 }
 
 .hero-video::-webkit-media-controls-play-button {
     display: none !important;
     -webkit-appearance: none;
+    opacity: 0 !important;
+    visibility: hidden !important;
+}
+
+.hero-video::-webkit-media-controls-overlay-play-button {
+    display: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+}
+
+/* Hide iOS big play button */
+video::-webkit-media-controls-panel {
+    display: none !important;
+    opacity: 0 !important;
+}
+
+*::-webkit-media-controls-start-playback-button {
+    display: none !important;
+    -webkit-appearance: none;
+    opacity: 0 !important;
+}
+
+*::-webkit-media-controls-overlay-play-button {
+    display: none !important;
+    opacity: 0 !important;
 }
 
 .hero-overlay {
