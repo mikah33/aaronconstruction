@@ -744,7 +744,7 @@ video::-webkit-media-controls-panel {
     z-index: 1;
 }
 
-/* Invisible touch layer to cover play button and capture touch */
+/* Touch layer with poster image to cover video play button */
 .video-touch-layer {
     position: absolute;
     top: 0;
@@ -752,7 +752,9 @@ video::-webkit-media-controls-panel {
     right: 0;
     bottom: 0;
     z-index: 1;
-    background: url('data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7');
+    background-image: url('../images/hero-poster.jpg');
+    background-size: cover;
+    background-position: center;
     cursor: pointer;
 }
 
