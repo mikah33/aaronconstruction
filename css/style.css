@@ -856,6 +856,7 @@ video::-webkit-media-controls-panel {
 /* Services Section */
 .services-section {
     padding: 80px 0;
+    background-color: var(--white);
 }
 
 .service-card {
@@ -935,6 +936,7 @@ video::-webkit-media-controls-panel {
 /* Gallery Section */
 .gallery-section {
     padding: 80px 0;
+    background-color: var(--white);
 }
 
 .gallery-item {
