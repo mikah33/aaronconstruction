@@ -744,6 +744,23 @@ video::-webkit-media-controls-panel {
     z-index: 1;
 }
 
+/* Invisible touch layer to cover play button and capture touch */
+.video-touch-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+    background: url('data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7');
+    cursor: pointer;
+}
+
+.video-touch-layer.hidden {
+    display: none;
+    pointer-events: none;
+}
+
 .hero-section .container {
     position: relative;
     z-index: 2;

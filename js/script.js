@@ -110,6 +110,9 @@ window.addEventListener('load', function() {
 // Force autoplay videos on mobile (iOS fix)
 document.addEventListener('DOMContentLoaded', function() {
     const videos = document.querySelectorAll('video[autoplay]');
+    const heroVideo = document.getElementById('heroVideo');
+    const touchLayer = document.getElementById('videoTouchLayer');
+
     videos.forEach(video => {
         video.muted = true;
         video.setAttribute('playsinline', '');
@@ -123,6 +126,23 @@ document.addEventListener('DOMContentLoaded', function() {
             }, { once: true });
         });
     });
+
+    // Touch layer captures tap and plays video, hides play button
+    if (touchLayer && heroVideo) {
+        touchLayer.addEventListener('click', function() {
+            heroVideo.play();
+            touchLayer.classList.add('hidden');
+        });
+        touchLayer.addEventListener('touchstart', function() {
+            heroVideo.play();
+            touchLayer.classList.add('hidden');
+        }, { passive: true });
+
+        // Hide touch layer once video starts playing
+        heroVideo.addEventListener('playing', function() {
+            touchLayer.classList.add('hidden');
+        });
+    }
 });
 
 // Also try to play videos when they become visible
