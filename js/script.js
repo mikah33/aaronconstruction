@@ -14,10 +14,13 @@ document.addEventListener('DOMContentLoaded', function() {
     window.scrollTo(0, 0);
 });
 
-// Navbar scroll effect
+// Navbar scroll effect - only show background after scrolling past hero video
 window.addEventListener('scroll', function() {
     const navbar = document.querySelector('.navbar');
-    if (window.scrollY > 50) {
+    const heroSection = document.querySelector('.hero-section');
+    const heroHeight = heroSection ? heroSection.offsetHeight : window.innerHeight;
+
+    if (window.scrollY > heroHeight - 100) {
         navbar.classList.add('scrolled');
     } else {
         navbar.classList.remove('scrolled');
